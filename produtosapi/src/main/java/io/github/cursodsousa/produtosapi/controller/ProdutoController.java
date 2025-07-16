@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.RequestScope;
 import io.github.cursodsousa.produtosapi.model.Producto;
@@ -59,10 +60,10 @@ public class ProdutoController {
         productoRepository.save(produto);
     }
 
-//    @GetMapping
-//    public List<Producto> buscar(@RequestParam("nome") String nome){
-//        return productoRepository.findByNome(nome);
-//    }
+    @GetMapping
+    public List<Producto> buscar(@RequestParam("nome") String nome){
+        return productoRepository.findByNome(nome);
+    }
 	
 
 }
