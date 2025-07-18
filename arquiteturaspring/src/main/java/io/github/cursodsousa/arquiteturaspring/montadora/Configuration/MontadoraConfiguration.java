@@ -4,6 +4,7 @@ import io.github.cursodsousa.arquiteturaspring.montadora.Motor;
 import io.github.cursodsousa.arquiteturaspring.montadora.TipoMotor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class MontadoraConfiguration {
@@ -19,6 +20,7 @@ public class MontadoraConfiguration {
         return motor;
     }
 
+    @Primary
     @Bean(name = "motorEletrico")
     public Motor motorEletrico(){
         var motor = new Motor();
