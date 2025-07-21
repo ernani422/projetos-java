@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "request": "attach",
+            "type": "chrome",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ArquiteturaspringApplication",
+            "request": "launch",
+            "mainClass": "io.github.cursodsousa.arquiteturaspring.ArquiteturaspringApplication",
+            "projectName": "arquiteturaspring"
+        },
+        {
+            "type": "java",
+            "name": "ExemploInjecaoDependencia",
+            "request": "launch",
+            "mainClass": "io.github.cursodsousa.arquiteturaspring.ExemploInjecaoDependencia",
+            "projectName": "arquiteturaspring"
+        },
+        {
+            "type": "java",
+            "name": "ProdutosApiApplication",
+            "request": "launch",
+            "mainClass": "io.github.cursodsousa.produtosapi.ProdutosApiApplication",
+            "projectName": "produtosapi"
+        }
+    ]
+}
