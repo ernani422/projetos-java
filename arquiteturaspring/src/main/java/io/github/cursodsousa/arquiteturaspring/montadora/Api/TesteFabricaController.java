@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/carros")
 public class TesteFabricaController {
 
-    @Autowired
+
     @Aspirado
     private Motor motor;
 
