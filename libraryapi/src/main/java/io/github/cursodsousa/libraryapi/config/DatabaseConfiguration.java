@@ -21,7 +21,7 @@ public class DatabaseConfiguration {
     @Value("${spring.datasource.driver-class-name}")
     String driver;
 
-    //    @Bean
+    //@Bean
     public DataSource dataSource(){
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setUrl(url);
@@ -35,8 +35,14 @@ public class DatabaseConfiguration {
      * configuracao Hikary
      * https://github.com/brettwooldridge/HikariCP
      * @return
+     * por padrão o hikari ja vem configura do JPA por padrão,
+     * só esta sendo adicionado aqui para definir configuração especificas,
+     * mas se adiconar outro configuração não sendo o hikari, a configuração
+     * feita aqui vai sobscrever as quais vem por padrão? como o @bean acima
+     *
+     *
      */
-    @Bean
+    ///@Bean
     public DataSource hikariDataSource(){
 
         HikariConfig config = new HikariConfig();
@@ -49,7 +55,6 @@ public class DatabaseConfiguration {
         config.setMinimumIdle(1); // tamanho inicial do pool
         config.setPoolName("library-db-pool");
         config.setMaxLifetime(600000); // 600 mil ms (10 minutos)
-        config.setConnectionTimeout(100000); // timeout para conseguir uma conexão
         config.setConnectionTestQuery("select 1"); // query de teste
 
         return new HikariDataSource(config);
