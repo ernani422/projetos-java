@@ -3,6 +3,7 @@ package io.github.cursodsousa.libraryapi.repository;
 import io.github.cursodsousa.libraryapi.model.Autor;
 import io.github.cursodsousa.libraryapi.model.GeneroLivro;
 import io.github.cursodsousa.libraryapi.model.Livro;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -83,5 +84,17 @@ class LivroRepositoryTest {
     void deletarCascade(){
         UUID id = UUID.fromString("22238c02-8118-45ba-a9f0-202dfc3acc67");
         repository.deleteById(id);
+    }
+
+    @Test
+    @Transactional
+    void buscarLivroTest(){
+        UUID id = UUID.fromString("c2d05fc3-fda4-4eda-a22b-2c3c52d3dd54");
+        Livro livro = repository.findById(id).orElse(null);
+        System.out.println("Livro:");
+        System.out.println(livro.getTitulo());
+
+//        System.out.println("Autor:");
+//        System.out.println(livro.getAutor().getNome());
     }
 }
