@@ -11,22 +11,27 @@ import java.time.LocalDate;
 public class Application {
 
 	public static void main(String[] args) {
-		var context = SpringApplication.run(Application.class, args);
-		AutorRepository repository = context.getBean(AutorRepository.class);
-		exmeploSalvarRegistro(repository);
-
+		SpringApplication.run(Application.class, args);
 
 	}
 
-	public static void exmeploSalvarRegistro(AutorRepository autorRepository) {
-		Autor autor = new Autor();
-		autor.setNome("josé");
-		autor.setNacionalidade("Brasileiro");
-		autor.setDataNascimento(LocalDate.of(1950, 1, 31));
-
-		var autorSalvo = autorRepository.save(autor);
-		System.out.println(autorSalvo);
-
-	}
+//	public static void main(String[] args) {
+//		var context = SpringApplication.run(Application.class, args);
+//		AutorRepository repository = context.getBean(AutorRepository.class);
+//		exmeploSalvarRegistro(repository);
+//
+//
+//	}
+//
+//	public static void exmeploSalvarRegistro(AutorRepository autorRepository) {
+//		Autor autor = new Autor();
+//		autor.setNome("josé");
+//		autor.setNacionalidade("Brasileiro");
+//		autor.setDataNascimento(LocalDate.of(1950, 1, 31));
+//
+//		var autorSalvo = autorRepository.save(autor);
+//		System.out.println(autorSalvo);
+//
+//	}
 
 }

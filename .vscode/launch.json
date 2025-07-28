@@ -4,7 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
+        {
+            "type": "java",
+            "name": "Application",
+            "request": "launch",
+            "mainClass": "io.github.cursodsousa.libraryapi.Application",
+            "projectName": "demo"
+        },
         {
             "name": "Attach to Chrome",
             "port": 9222,
