@@ -19,6 +19,11 @@ public class AutorControllers {
         return repository.findAll();
     }
 
+    @PostMapping
+    public Autor saveAutor(@RequestBody Autor autor){
+        return repository.save(autor);
+    }
+
 
 }
 

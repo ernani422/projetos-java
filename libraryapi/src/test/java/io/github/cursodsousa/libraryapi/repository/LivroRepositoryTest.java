@@ -5,11 +5,13 @@ import io.github.cursodsousa.libraryapi.model.GeneroLivro;
 import io.github.cursodsousa.libraryapi.model.Livro;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,7 +34,7 @@ class LivroRepositoryTest {
         livro.setIsbn("90887-84874");
         livro.setPreco(BigDecimal.valueOf(100));
         livro.setGenero(GeneroLivro.FICCAO);
-        livro.setTitulo("Outro Livro");
+        livro.setTitulo("Outro Livro 10 mil");
         livro.setDataPublicacao(LocalDate.of(1980, 1, 2));
 
         Autor autor = autorRepository
@@ -50,11 +52,11 @@ class LivroRepositoryTest {
         livro.setIsbn("9000-84870");
         livro.setPreco(BigDecimal.valueOf(100));
         livro.setGenero(GeneroLivro.FICCAO);
-        livro.setTitulo("Outro Livro 02");
+        livro.setTitulo("O Roubo da casa assombrada");
         livro.setDataPublicacao(LocalDate.of(1980, 1, 2));
 
         Autor autor =new Autor();
-        autor.setNome("Mauricio Antonio");
+        autor.setNome("Antonio Eustaquio ferreira");
         autor.setNacionalidade("Brasileiro");
         autor.setDataNascimento(LocalDate.of(1962, 6, 25));
         livro.setAutor(autor);
@@ -82,7 +84,7 @@ class LivroRepositoryTest {
 
     @Test
     void deletarCascade(){
-        UUID id = UUID.fromString("22238c02-8118-45ba-a9f0-202dfc3acc67");
+        UUID id = UUID.fromString("f92f34ed-1899-48f7-ba83-9bc899b0240b");
         repository.deleteById(id);
     }
 
@@ -93,8 +95,18 @@ class LivroRepositoryTest {
         Livro livro = repository.findById(id).orElse(null);
         System.out.println("Livro:");
         System.out.println(livro.getTitulo());
+        System.out.println("Autor:");
+        System.out.println(livro.getAutor().getNome());
 
 //        System.out.println("Autor:");
 //        System.out.println(livro.getAutor().getNome());
     }
+
+    @Test
+    void pesquisaPorLivroTest(){
+        List<Livro> lista = repository.findByTitulo("O Roubo da casa assombrada");
+        lista.forEach(System.out::println);
+
+    }
+
 }

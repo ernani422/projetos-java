@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import api from "./api";
+
 
 function App() {
   const [livros, setLivros] = useState([]);
@@ -21,7 +23,7 @@ function App() {
   const buscarLivros = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:8080/livros');
+      const res = await api.post("livros");
       const data = await res.json();
       setLivros(data);
     } catch {
@@ -54,11 +56,12 @@ function App() {
       }
     };
     try {
-      const res = await fetch('http://localhost:8080/livros', {
+      const res = await api.post('livros', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(livro)
       });
+      res.ok = undefined;
       if (res.ok) {
         setMensagem('Livro cadastrado com sucesso!');
         setForm({

@@ -3,9 +3,7 @@ package io.github.cursodsousa.libraryapi.controllers;
 import io.github.cursodsousa.libraryapi.model.Livro;
 import io.github.cursodsousa.libraryapi.repository.LivroRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/livros")
@@ -17,6 +15,11 @@ public class LivrosControlles {
     @GetMapping
     public Iterable<Livro> getLivros() {
         return livroRepository.findAll();
+    }
+
+    @PostMapping
+    public Livro saveLivro(@RequestBody Livro livro){
+        return livroRepository.save(livro);
     }
 
 
